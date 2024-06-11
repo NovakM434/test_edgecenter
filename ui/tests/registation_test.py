@@ -52,4 +52,4 @@ class TestRegistrationsField:
         registration_page = RegistationPage(browser)
         registration_page.go_to_registration_page()
         response = registration_page.phone_field()
-        assert response == "Заполните это поле."
+        assert response == "Заполните это поле"
