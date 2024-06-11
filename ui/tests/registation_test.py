@@ -3,8 +3,6 @@ import allure
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from page.registrations_page import RegistationPage
-
-
 class TestRegistrationsField:
     @allure.title("Проверка поля email")
     @allure.description("Вводим не валидные данные и проверяем, что они не пройдут")
@@ -52,4 +50,4 @@ class TestRegistrationsField:
         registration_page = RegistationPage(browser)
         registration_page.go_to_registration_page()
         response = registration_page.phone_field()
-        assert response == "Заполните это поле"
+        assert response == "Заполните это поле."
