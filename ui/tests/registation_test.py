@@ -1,7 +1,5 @@
-import time
 import allure
 import pytest
-
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from page.registrations_page import RegistationPage

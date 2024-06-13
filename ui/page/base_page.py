@@ -1,7 +1,7 @@
+import allure
 from selenium.webdriver.chrome.webdriver import ChromiumDriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-import allure
 
 
 class BasePage:
