@@ -23,7 +23,7 @@ class TestRegistrationsField:
     )
     def test_not_valid_email_field(
         self, browser: WebDriver, email: str, expected_error: str
-    ):
+    ) -> None:
         registration_page = RegistationPage(browser)
         registration_page.go_to_registration_page()
         registration_page.fill_email_field(email)
@@ -44,11 +44,10 @@ class TestRegistrationsField:
             ("!1Pa", "Используйте хотя бы 8 символов."),
         ],
     )
-    def test_password(self, browser: WebDriver, password: str, warning: str):
+    def test_password(self, browser: WebDriver, password: str, warning: str) -> None:
         registration_page = RegistationPage(browser)
         registration_page.go_to_registration_page()
         registration_page.fill_password_field(password)
-        time.sleep(10)
         password_error_response = registration_page.get_password_validation_error()
         with allure.step("Проверка, что не валидные данные в пароле дадут ошибку ошибку"):
             assert password_error_response == warning
@@ -56,7 +55,7 @@ class TestRegistrationsField:
     @allure.title("Проверка пустого поля пароля")
     @allure.description("Проверяем, что пустое поле так же вызовет ошибку")
     @pytest.mark.password2
-    def test_null_password(self, browser: WebDriver):
+    def test_null_password(self, browser: WebDriver) -> None:
         registration_page = RegistationPage(browser)
         registration_page.go_to_registration_page()
         registration_page.fill_password_field("1")
@@ -69,7 +68,7 @@ class TestRegistrationsField:
     @allure.title("Проверка поле моб.номера")
     @allure.description("Проверяем, заполняя все поля и указав короткий номер.")
     @pytest.mark.shortphonenumber
-    def test_phone_short_field(self, browser: WebDriver):
+    def test_phone_short_field(self, browser: WebDriver) -> None:
         registration_page = RegistationPage(browser)
         registration_page.go_to_registration_page()
         registration_page.fill_email_field("1@mail.ru")
@@ -83,7 +82,7 @@ class TestRegistrationsField:
     @allure.title("Проверка поле моб.номера")
     @allure.description("Проверяем, что пустое поле вызовет ошибку.")
     @pytest.mark.nullphonenumber
-    def test_phone_null_field(self, browser: WebDriver):
+    def test_phone_null_field(self, browser: WebDriver) -> None:
         registration_page = RegistationPage(browser)
         registration_page.go_to_registration_page()
         registration_page.fill_email_field('1@mail.ru')

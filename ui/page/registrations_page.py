@@ -29,19 +29,19 @@ class RegistationPage(BasePage):
         self.driver.get(f"{self.base_url}{self.path}")
 
     @allure.step("Заполняем поле email")
-    def fill_email_field(self, email: str):
+    def fill_email_field(self, email: str) -> None:
         self._send_keys(self.email_field, email)
 
     @allure.step("Заполняем поле password")
-    def fill_password_field(self, password: str):
+    def fill_password_field(self, password: str) -> None:
         self._send_keys(self.password_field, password)
 
     @allure.step("Заполняем поле phone")
-    def fill_phone_field(self, phone: str):
+    def fill_phone_field(self, phone: str) -> None:
         self._send_keys(self.phone_field, phone)
 
     @allure.step("Ставим галочку в чекбоксе")
-    def fill_checkbox(self):
+    def fill_checkbox(self) -> None:
         self._find_element(*self.check_box).click()
 
     @allure.step("Получение ошибки валидации email")
@@ -70,9 +70,9 @@ class RegistationPage(BasePage):
         return self._find_element(*self.warning_phone_field).text
 
     @allure.step("Очищаем поле phone")
-    def clear_phone(self):
+    def clear_phone(self) -> None:
         self._find_element(*self.phone_field).send_keys(Keys.BACK_SPACE)
 
     @allure.step("Очищаем поле password")
-    def clear_password(self):
+    def clear_password(self) -> None:
         self._find_element(*self.password_field).send_keys(Keys.BACK_SPACE)

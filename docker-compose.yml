@@ -7,9 +7,12 @@ services:
     volumes:
       - .:/app
     depends_on:
-      selenium:
-        condition: service_healthy
-    command: pytest --browser=remote ui/tests/
+      - selenium
+    command: >
+      bash -c "
+      sleep 10;
+      pytest --browser=remote ui/tests/
+      "
 
   selenium:
     image: selenium/standalone-chrome:latest
@@ -17,8 +20,3 @@ services:
       - "4444:4444"
       - "7900:7900"
     shm_size: 2g
-    healthcheck:
-      test: ["CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:4444/wd/hub || exit 1"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
